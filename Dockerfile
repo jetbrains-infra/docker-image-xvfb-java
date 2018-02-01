@@ -21,7 +21,8 @@ RUN apt-get update -qqy \
 #Install default JRE
 RUN sudo apt-get -y install default-jre
 
-EXPOSE 5901
+#Expose ports for VNC and remote debug
+EXPOSE 5009
 EXPOSE 5900
 
 ENV DISPLAY :1
