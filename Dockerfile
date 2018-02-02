@@ -25,4 +25,9 @@ RUN sudo apt-get -y install default-jre
 EXPOSE 5009
 EXPOSE 5900
 
-ENV DISPLAY :1
+ADD x11vnc-script.sh ./x11vnc-script.sh
+RUN chmod +x ./x11vnc-script.sh
+
+ENTRYPOINT xvfb-run --server-args=":99 -screen 0 1920x1080x24 -ac +extension RANDR" ./x11vnc-script.sh
+
+ENV DISPLAY :99
