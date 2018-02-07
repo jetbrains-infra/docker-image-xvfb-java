@@ -21,13 +21,13 @@ RUN apt-get update -qqy \
 #Install default JRE
 RUN sudo apt-get -y install default-jre
 
-#Expose ports for VNC and remote debug
+#Install Fluxbox as a minimum X window manager
+RUN sudo apt-get update -qqy && apt-get -y install fluxbox
+
+#Expose port for Java debugging
 EXPOSE 5009
-EXPOSE 5900
 
-ADD x11vnc-script.sh ./x11vnc-script.sh
-RUN chmod +x ./x11vnc-script.sh
-
-ENTRYPOINT xvfb-run --server-args=":99 -screen 0 1920x1080x24 -ac +extension RANDR" ./x11vnc-script.sh
+ADD xinit.sh ./xinit.sh
+RUN chmod +x ./xinit.sh
 
 ENV DISPLAY :99
