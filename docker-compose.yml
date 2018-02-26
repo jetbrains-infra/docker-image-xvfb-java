@@ -3,7 +3,7 @@ version: '3'
 services:
   #Starts Xvfb, fluxbox and x11vnc without password. See xinit.sh for more information
   xinit:
-    build: .
+    image: "docker-registry.labs.intellij.net/karashevich/java-xvfb:latest"
     command: bash -c "./xinit.sh"
     ports:
       - 5902:5900
