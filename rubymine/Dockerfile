@@ -1,4 +1,4 @@
-FROM karashevich/java-xvfb:latest
+FROM docker-registry.labs.intellij.net/karashevich/java-xvfb:latest
 
 # basics
 RUN apt-get update
