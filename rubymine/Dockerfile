@@ -13,4 +13,9 @@ RUN . /usr/share/rvm/scripts/rvm
 
 # install Ruby, bundler
 RUN /bin/bash -l -c "rvm install 2.5.0"
+RUN /bin/bash -l -c "ruby -v"
+RUN /bin/bash -l -c "rvm user gemsets"
+RUN /bin/bash --login
+RUN /bin/bash -l -c "rvm gemset create gemset"
+RUN /bin/bash -l -c "rvm gemset use 2.5.0@gemset"
 RUN /bin/bash -l -c "gem install bundler --no-ri --no-rdoc"
